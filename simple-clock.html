@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="utf-8">
+    <title>Simple clock</title>
+    <style>
+    /*
+        このCSSの部分をOBSのブラウザソースのカスタムCSSに設定することで
+        ファイルを変更せずにOBS側でカスタマイズできます.
+    */
+    body {
+        background-color:#00000000; /* 背景色 RGBA 標準は透過*/
+    }
+    /* 文字装飾 */
+    #time {
+        font-size:80px; /* サイズ */
+        font-family: "M+ 1p black", sans-serif; /* フォント指定 */
+        color:#000000; /* 色 */
+        
+        /* アウトライン 標準はOFF、必要な場合はコメントアウトを外す */
+        /*
+        text-shadow: -2px -2px #000000,-2px -1px #000000,-2px 0px #000000,-2px 1px #000000,-2px 2px #000000,-1px -2px #000000,-1px -1px #000000,-1px 0px #000000,-1px 1px #000000,-1px 2px #000000,0px -2px #000000,0px -1px #000000,0px 0px #000000,0px 1px #000000,0px 2px #000000,1px -2px #000000,1px -1px #000000,1px 0px #000000,1px 1px #000000,1px 2px #000000,2px -2px #000000,2px -1px #000000,2px 0px #000000,2px 1px #000000,2px 2px #000000;
+        */
+    }
+
+    /* 時間と分 */
+    #hhmm {
+        font-size:100%; /* #timeのサイズに対するサイズ割合 */
+    }
+
+    /* 秒 */
+    #ss {
+        font-size:60%; /*  #timeのサイズに対するサイズ割合  */
+    }
+    </style>
+</head>
+<body>
+    <div id="time">
+        <span id="hhmm"></span>
+    </div>
+    <script>
+    time();
+    function time(){
+        var date = new Date();
+        var str = ('0' + date.getHours()).slice(-2) + ":"
+                + ('0' + date.getMinutes()).slice(-2)
+                + "<span  id='ss'></span >";
+        document.getElementById("hhmm").innerHTML = str;
+        
+        str = ":" + ('0' + date.getSeconds()).slice(-2);
+        document.getElementById("ss").innerHTML = str;
+    }
+    setInterval('time()',1000);
+    </script>
+</body>
+</html>
