@@ -39,5 +39,5 @@ simple-clock.html 内の<style>から</style>までの間をコピーして、OB
 ### 要約
 MIT License での配布なので利用制限、動作損害保証ともに一切ありません。
 ### 嬉しい
-宣伝やRTをしてもらえると嬉しいです ⸜(*╹꒳╹* )⸝
+宣伝やRTをしてもらえると嬉しいです ⸜(\*╹꒳╹\*)⸝
 https://twitter.com/yuki_natsuno_vt/status/1286504301120991232
