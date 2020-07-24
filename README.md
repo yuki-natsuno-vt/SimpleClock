@@ -3,6 +3,10 @@ Webブラウザで動作するシンプルな時計です.
 
 ![Preview Image](./doc/doc00.png)
 
+解説動画
+
+[![](https://img.youtube.com/vi/wNfoZsM_CDo/0.jpg)](https://www.youtube.com/watch?v=wNfoZsM_CDo)
+
 ## ダウンロード
 1. ファイルの一覧から simple-clock.html を開く.
 2. Rawボタンを右クリックして[名前を付けてリンク先を保存]![Preview Image](./doc/doc01.png)
@@ -30,3 +34,10 @@ OBSのソースにブラウザを追加します. 設定でローカルファイ
 ### カスタムCSS
 simple-clock.html 内の<style>から</style>までの間をコピーして、OBSのカスタムCSSとして指定すると、OBS側で表示をカスタマイズできます.
 複数のシーンで異なるスタイルを設定したい場合はこの方法が便利です.
+
+## ライセンス
+### 要約
+MIT License での配布なので利用制限、動作損害保証ともに一切ありません。
+### 嬉しい
+宣伝やRTをしてもらえると嬉しいです ⸜(*╹꒳╹* )⸝
+https://twitter.com/yuki_natsuno_vt/status/1286504301120991232
