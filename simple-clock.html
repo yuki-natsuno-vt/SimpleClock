@@ -5,46 +5,64 @@
     <title>Simple clock</title>
     <style>
     /*
-        ‚±‚ÌCSS‚Ì•”•ª‚ğOBS‚Ìƒuƒ‰ƒEƒUƒ\[ƒX‚ÌƒJƒXƒ^ƒ€CSS‚Éİ’è‚·‚é‚±‚Æ‚Å
-        ƒtƒ@ƒCƒ‹‚ğ•ÏX‚¹‚¸‚ÉOBS‘¤‚ÅƒJƒXƒ^ƒ}ƒCƒY‚Å‚«‚Ü‚·.
+        ã“ã®CSSã®éƒ¨åˆ†ã‚’OBSã®ãƒ–ãƒ©ã‚¦ã‚¶ã‚½ãƒ¼ã‚¹ã®ã‚«ã‚¹ã‚¿ãƒ CSSã«è¨­å®šã™ã‚‹ã“ã¨ã§
+        ãƒ•ã‚¡ã‚¤ãƒ«ã‚’å¤‰æ›´ã›ãšã«OBSå´ã§ã‚«ã‚¹ã‚¿ãƒã‚¤ã‚ºã§ãã¾ã™.
     */
     body {
-        background-color:#00000000; /* ”wŒiF RGBA •W€‚Í“§‰ß*/
+        background-color:#00000000; /* èƒŒæ™¯è‰² RGBA æ¨™æº–ã¯é€é*/
     }
-    /* •¶š‘•ü */
+    /* æ–‡å­—è£…é£¾ */
     #time {
-        font-size:80px; /* ƒTƒCƒY */
-        font-family: "M+ 1p black", sans-serif; /* ƒtƒHƒ“ƒgw’è */
-        color:#000000; /* F */
+        font-size:80px; /* ã‚µã‚¤ã‚º */
+        font-family: "M+ 1p black", sans-serif; /* ãƒ•ã‚©ãƒ³ãƒˆæŒ‡å®š */
+        color:#000000; /* è‰² */
         
-        /* ƒAƒEƒgƒ‰ƒCƒ“ •W€‚ÍOFFA•K—v‚Èê‡‚ÍƒRƒƒ“ƒgƒAƒEƒg‚ğŠO‚· */
+        /* ã‚¢ã‚¦ãƒˆãƒ©ã‚¤ãƒ³ æ¨™æº–ã¯OFFã€å¿…è¦ãªå ´åˆã¯ã‚³ãƒ¡ãƒ³ãƒˆã‚¢ã‚¦ãƒˆã‚’å¤–ã™ */
         /*
         text-shadow: -2px -2px #000000,-2px -1px #000000,-2px 0px #000000,-2px 1px #000000,-2px 2px #000000,-1px -2px #000000,-1px -1px #000000,-1px 0px #000000,-1px 1px #000000,-1px 2px #000000,0px -2px #000000,0px -1px #000000,0px 0px #000000,0px 1px #000000,0px 2px #000000,1px -2px #000000,1px -1px #000000,1px 0px #000000,1px 1px #000000,1px 2px #000000,2px -2px #000000,2px -1px #000000,2px 0px #000000,2px 1px #000000,2px 2px #000000;
         */
     }
 
-    /* ŠÔ‚Æ•ª */
+    /* å¹´æœˆæ—¥ */
+    #YYYYMMDD {
+        font-size:0%; /* #timeã®ã‚µã‚¤ã‚ºã«å¯¾ã™ã‚‹ã‚µã‚¤ã‚ºå‰²åˆ */
+    }
+    
+    /* æ™‚é–“ã¨åˆ† */
     #hhmm {
-        font-size:100%; /* #time‚ÌƒTƒCƒY‚É‘Î‚·‚éƒTƒCƒYŠ„‡ */
+        font-size:100%; /* #timeã®ã‚µã‚¤ã‚ºã«å¯¾ã™ã‚‹ã‚µã‚¤ã‚ºå‰²åˆ */
     }
 
-    /* •b */
+    /* ç§’ */
     #ss {
-        font-size:60%; /*  #time‚ÌƒTƒCƒY‚É‘Î‚·‚éƒTƒCƒYŠ„‡  */
+        font-size:60%; /*  #timeã®ã‚µã‚¤ã‚ºã«å¯¾ã™ã‚‹ã‚µã‚¤ã‚ºå‰²åˆ  */
     }
     </style>
 </head>
 <body>
     <div id="time">
-        <span id="hhmm"></span>
+        <span id="YYYYMMDD"></span> <span id="hhmm"></span><span id="ss"></span>
     </div>
     <script>
     time();
     function time(){
+        /* å¹´æœˆæ—¥ã®åŒºåˆ‡ã‚ŠæŒ‡å®š */
+        /*
+          ä½•ã‚‚è¡¨ç¤ºã—ãŸããªã„å ´åˆã¯""ã®ã¿ã«ã™ã‚‹.
+          æ—¥æœ¬èªã®å¹´,æœˆ,æ—¥ãªã©ã‚’ä½¿ã„ãŸã„å ´åˆã¯4è¡Œç›®ã® utf-8 ã‚’ shift_jis ã«æ›¸ãæ›ãˆã‚‹.
+        */
+        var separatorYear  = "/";
+        var separatorMonth = "/";
+        var separatorDate  = "";
+    
         var date = new Date();
-        var str = ('0' + date.getHours()).slice(-2) + ":"
-                + ('0' + date.getMinutes()).slice(-2)
-                + "<span  id='ss'></span >";
+        var str = ('0' + date.getFullYear()).slice(-4) + separatorYear
+                + ('0' + (date.getMonth()+1)).slice(-2) + separatorMonth
+                + ('0' + date.getDate()).slice(-2) + separatorDate;
+        document.getElementById("YYYYMMDD").innerHTML = str;
+        
+        str = ('0' + date.getHours()).slice(-2) + ":"
+                + ('0' + date.getMinutes()).slice(-2);
         document.getElementById("hhmm").innerHTML = str;
         
         str = ":" + ('0' + date.getSeconds()).slice(-2);
